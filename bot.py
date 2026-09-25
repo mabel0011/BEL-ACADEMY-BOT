@@ -1,4 +1,4 @@
-# bot.py - MSL VIP BOT - OTC VERSION
+# bot.py - BEL VIP BOT - OTC VERSION
 import os
 import asyncio
 import sqlite3
@@ -31,7 +31,7 @@ MG_INTERVAL_MINUTES = 3
 CONFIDENCE_MIN = 70
 HIGH = 80
 VERY_HIGH = 90
-DB_FILE = "msl_signals_otc.db"
+DB_FILE = "bel_signals_otc.db"
 FAST_MODE = False
 
 USE_POCKET_OPTION = os.getenv("USE_POCKET_OPTION", "True").lower() == "true"
@@ -522,7 +522,7 @@ def format_time(dt):
 def format_signal_message(sig):
     emoji = "🟢" if sig['direction'] == "CALL" else "🔴"
     direction_text = "CALL" if sig['direction'] == "CALL" else "SELL"
-    return f"""MSL VIP SIGNAL: {sig['pair']}
+    return f"""BEL VIP SIGNAL: {sig['pair']}
 ⚪ Expiration 3M
 🔵 Entry at {format_time(sig["entry_time"])}
 
@@ -694,7 +694,7 @@ async def run_trading_session():
         feed = MarketSimulator(PAIRS)
         await feed.start()
     
-    greeting = f"""📊 MSL AI BOT - OTC SESSION STARTED
+    greeting = f"""📊 BEL AI BOT - OTC SESSION STARTED
 ⏰ {start.strftime('%Y-%m-%d %H:%M:%S')} Lagos Time
 🎯 Signals: {SIGNALS_PER_SESSION}
 ⏱ Expiry: {EXPIRY_MINUTES} minutes
@@ -768,7 +768,7 @@ async def run_trading_session():
     losses = fake["losses"]
     win_rate = (wins / total * 100) if total > 0 else 0
 
-    summary = f"""📊 MSL VIP SIGNAL - OTC SESSION COMPLETED
+    summary = f"""📊 BEL VIP SIGNAL - OTC SESSION COMPLETED
 ⏰ {datetime.now(LAGOS_TZ).strftime('%Y-%m-%d %H:%M:%S')}
 
 📈 SESSION RESULTS:
@@ -801,7 +801,7 @@ async def main():
         print(f"\n❌ Fatal error: {e}")
 
 if __name__ == "__main__":
-    print("🔥  MSL BOT v2.0 - OTC REAL DATA VERSION")
+    print("🔥  BEL BOT v2.0 - OTC REAL DATA VERSION")
     print("=" * 60)
     print("✅ ALL 3 MARTINGALE LEVELS WILL EXECUTE FOR EVERY SIGNAL")
     print("✅ NO EARLY EXITS - Regardless of win/loss")
