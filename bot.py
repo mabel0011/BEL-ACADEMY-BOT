@@ -99,7 +99,13 @@ def send_telegram(text):
         print(text)
         return {"ok": True, "simulated": True}
     try:
-        r = requests.post(TELEGRAM_API, json={"chat_id": TELEGRAM_CHAT_ID, "text": text}, timeout=10)
+        r = requests.post(
+            TELEGRAM_API,
+            json={"chat_id": TELEGRAM_CHAT_ID, "text": text},
+            timeout=10
+        )
+        print(f"[TELEGRAM] HTTP {r.status_code}")
+        print(f"[TELEGRAM] Response: {r.text}")
         return r.json()
     except Exception as e:
         print("Telegram error:", e)
