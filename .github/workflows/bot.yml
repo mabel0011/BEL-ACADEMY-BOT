@@ -1,13 +1,13 @@
-name: MSL VIP Bot Scheduler
+name: BEL VIP Bot Scheduler
 
 on:
   schedule:
-    # 9AM WAT (8AM UTC)
-    - cron: '0 8 * * *'
-    # 3PM WAT (2PM UTC)
-    - cron: '0 14 * * *'
-    # 8PM WAT (7PM UTC)
-    - cron: '0 19 * * *'
+    # 8:30AM WAT (7:30AM UTC)
+    - cron: '30 7 * * *'
+    # 2:30PM WAT (1:30PM UTC)
+    - cron: '30 13 * * *'
+    # 7:30PM WAT (6:30PM UTC)
+    - cron: '30 18 * * *'
   workflow_dispatch:
 
 jobs:
@@ -28,7 +28,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run MSL VIP Bot
+      - name: Run BEL VIP Bot
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
